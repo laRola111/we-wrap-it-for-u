@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "about": "About Us",
+    "quote": "Get a Quote"
+  },
+  "sectionOne": {
+    "title": "Transform Your Vehicle Today",
+    "description": "With our custom designs, we take your car to the next level. Make it unique and stand out on the streets!",
+    "quoteButton": "Get a Quote"
+  }
+  }
+  

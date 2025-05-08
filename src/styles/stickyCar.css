@@ -1,0 +1,66 @@
+/* Estilos generales del contenedor */
+.sticky-car {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* El carro base nunca debe tener animación */
+.car-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1; /* Asegúrate de que esté debajo de los estampados */
+  pointer-events: none; /* No interactuar con él */
+}
+
+/* Estampados */
+.car-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none; /* No interactuar con el estampado */
+  opacity: 0; /* Inicialmente oculto */
+  transition: opacity 0.8s ease; /* Solo transición de opacidad */
+  z-index: 2;
+}
+
+/* Solo aplica animación de revelado al estampado nuevo */
+.car-wrap.reveal {
+  animation: revealLeftToRight 0.8s ease-in-out forwards;
+  opacity: 1; /* Asegura que la opacidad sea visible una vez revelado */
+}
+
+@keyframes revealLeftToRight {
+  from {
+    clip-path: inset(0 100% 0 0); /* Comienza desde la derecha */
+  }
+  to {
+    clip-path: inset(0 0% 0 0); /* Se revela hacia la izquierda */
+  }
+}
+
+/* Animación de salida hacia la derecha */
+.sticky-car.exit {
+  animation: exitRight 0.8s ease forwards;
+}
+
+@keyframes exitRight {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(100%, -50%);
+    opacity: 0;
+  }
+}

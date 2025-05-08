@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contacto",
+    "about": "Nosotros",
+    "quote": "Cotizar"
+  },
+  "sectionOne": {
+    "title": "Transforma tu vehículo hoy",
+    "description": "Con nuestros diseños personalizados, llevamos tu carro al siguiente nivel. ¡Hazlo único y resalta en la calle!",
+    "quoteButton": "Cotiza ahora"
+  }
+  }
+  

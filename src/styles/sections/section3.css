@@ -1,0 +1,24 @@
+  .section-three {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url('/images/bg-section3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+  }
+  
+  .section-three h1 {
+    font-size: 2.5rem;
+    color: white; /* O ajusta según contraste del fondo */
+    z-index: 2;
+  }
+  @media (max-width: 768px) {
+    .section-three {
+      background-image: url('/images/bg-section1-mobile.webp');
+    }
+  }

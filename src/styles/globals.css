@@ -1,12 +1,23 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base colors */
+  --color-bg: #ffffff;
+  --color-dark-text: #2b2b2b;
+
+  /* Brand colors */
+  --color-primary: #e51a23;
+  --color-secondary: #e94b1e;
+  --color-accent: #35232d;
+  --color-gray: #ececec;
+
+  /* Default background/text for light mode */
+  --background: var(--color-bg);
+  --foreground: var(--color-dark-text);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #2b2b2b;
   }
 }
 

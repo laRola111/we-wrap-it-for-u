@@ -1,0 +1,43 @@
+.home-container {
+  min-height: 100vh; /* Asegura que el contenedor principal ocupe al menos una pantalla */
+  overflow-y: auto; /* Activa el scroll */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background-color: white;
+
+  background-image: url('/images/cinta-repeat.png');
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: contain;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.scroll-background-bar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px; /* Puedes ajustar el ancho */
+  background: var(--bar-color-1); /* Se cambiará dinámicamente */
+  z-index: 0;
+  transition: background-color 0.5s ease-in-out;
+}
+.sticky-car {
+  position: fixed;
+  bottom: 0;
+  left: 70%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+  max-width: 800px;
+}
+
+.car-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1; /* Mantiene la proporción del carro */
+}
+
