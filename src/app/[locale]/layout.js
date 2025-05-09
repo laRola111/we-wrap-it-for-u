@@ -1,6 +1,7 @@
 // src/app/[locale]/layout.js
 import { getMessages } from '@/i18n/getMessages';
 import Navbar from '@/components/Navbar';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import '@/styles/globals.css';
 
 export async function generateStaticParams() {
@@ -14,8 +15,9 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html lang={locale}>
       <body>
-        <Navbar locale={locale} messages={messages} /> {/* <- pasamos mensajes */}
+        <Navbar locale={locale} messages={messages} />
         {children}
+       <SpeedInsights />
       </body>
     </html>
   );
