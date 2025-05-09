@@ -11,9 +11,9 @@ const SectionOne = ({ messages }) => {
         <Link href="/cotizar/" className="your-class">
           Get a Quote
         </Link>
-        <a href="https://wa.me/tuNumero" className="btn-whatsapp" aria-label="WhatsApp">
+        {/* <a href="https://wa.me/tuNumero" className="btn-whatsapp" aria-label="WhatsApp"> */}
           {/* <img src="/images/whatsapp-logo.png" alt="WhatsApp" /> */}
-        </a>
+        {/* </a> */}
       </div>
     </section>
   );
