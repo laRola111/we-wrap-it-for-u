@@ -1,0 +1,272 @@
+/* ================================================================
+   WE WRAP IT FOR U — HERO SECTION
+   Uses RAF-driven mask position (zero jank, no React re-renders)
+================================================================ */
+.wrap-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ensure touch events work without blocking the page scroll */
+  touch-action: pan-y;
+}
+
+/* BASE LAYER: bg-hero-1 */
+.hero-base {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Vignette for text legibility */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(5,5,5,0.1) 0%, rgba(5,5,5,0.8) 100%);
+  z-index: 2;
+}
+
+/* SCANNER LAYER: scroll-driven radial reveal */
+.hero-scanner {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  /* Starts almost invisible (tiny circle), grows on scroll via JS */
+  -webkit-mask-image: radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-image: radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%);
+  mask-repeat: no-repeat;
+  will-change: mask-image;
+}
+
+.hero-reveal {
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* HERO TEXT */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 3rem;
+  /* Must not block scroll */
+  pointer-events: none;
+}
+.hero-text { pointer-events: auto; }
+
+.hero-eyebrow {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.hero-h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.9);
+  margin-bottom: 1.8rem;
+}
+.hero-accent { color: var(--color-primary); }
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.8);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  padding: 0.9rem 1.8rem;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+.btn-primary:hover {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 6px 20px var(--color-primary-glow);
+}
+
+.btn-ghost {
+  padding: 0.9rem 1.8rem;
+  background: transparent;
+  color: rgba(255,255,255,0.88);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-hint {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.12em;
+}
+
+/* Blade cut */
+.blade-cut {
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 100%; height: 70px;
+  background: linear-gradient(to bottom-right, #050505 49.9%, transparent 50%);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-content { padding: 0 1.5rem; }
+  .hero-h1    { font-size: 2.6rem; }
+  .scanner-ring { width: 360px; height: 360px; }
+  .hero-scanner {
+    -webkit-mask-image: radial-gradient(circle 180px at 0px 0px, black 88%, transparent 100%);
+    mask-image: radial-gradient(circle 180px at 0px 0px, black 88%, transparent 100%);
+    -webkit-mask-position: calc(70vw - 180px) calc(40vh - 180px);
+    mask-position: calc(70vw - 180px) calc(40vh - 180px);
+  }
+}
+
+/* ── NAVBAR (shared with ArknicaNav) ─── */
+.arknica-nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 1.2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 500;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transition: padding 0.35s ease, background 0.35s ease;
+}
+
+.arknica-nav.nav-scrolled {
+  padding: 0.8rem 3rem;
+  background: rgba(5,5,5,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* LOGO — capped to 44px height, no filter EVER */
+.nav-logo img {
+  height: 44px;
+  max-height: 44px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+  /* NO filter — client logo shows exactly as original */
+  transition: transform 0.35s ease, opacity 0.35s;
+}
+.nav-scrolled .nav-logo img {
+  transform: scale(0.85);
+  transform-origin: left center;
+}
+
+.desktop-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links a, .dropdown-trigger {
+  color: rgba(255,255,255,0.75);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a:hover, .dropdown-trigger:hover { color: white; }
+
+.nav-cta {
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: white;
+  text-decoration: none;
+  background-size: 200% 200%;
+  background-image: linear-gradient(45deg, #e51a23 0%, #8800ff 50%, #e51a23 100%);
+  animation: liquid 5s ease infinite;
+  box-shadow: 0 4px 15px rgba(229,26,35,0.35);
+  transition: box-shadow 0.3s;
+  white-space: nowrap;
+}
+.nav-cta:hover {
+  box-shadow: 0 4px 25px rgba(229,26,35,0.6);
+}
+
+@keyframes liquid {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+.hamburger {
+  display: none;
+  background: none; border: none;
+  color: white; font-size: 1.6rem; cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .arknica-nav { padding: 1rem 1.5rem; }
+  .arknica-nav.nav-scrolled { padding: 0.7rem 1.5rem; }
+  .desktop-links, .nav-cta { display: none; }
+  .hamburger { display: block; }
+}
+@media (min-width: 769px) {
+  .mobile-menu { display: none !important; }
+}

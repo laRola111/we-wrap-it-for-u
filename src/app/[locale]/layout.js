@@ -1,25 +1,21 @@
 // src/app/[locale]/layout.js
+// Locale layout: NO html/body here — those only live in the root layout.js
 import { getMessages } from '@/i18n/getMessages';
-import Navbar from '@/components/Navbar';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import '@/styles/globals.css';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export async function generateStaticParams() {
   return ['en', 'es'].map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({ children, params }) {
-  const { locale } = params;
-  const messages = await getMessages(locale);
+  const resolvedParams = await params;
+  const { locale } = resolvedParams;
 
+  // Just pass children through — no wrapping html/body
   return (
-    <html lang={locale}>
-      <body>
-        <Navbar locale={locale} messages={messages} />
-        {children}
-       <SpeedInsights />
-      </body>
-    </html>
+    <>
+      {children}
+      <SpeedInsights />
+    </>
   );
 }
-

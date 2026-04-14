@@ -1,0 +1,11 @@
+Model Information:
+* title:	BMW G21 Car Wrap
+* source:	https://sketchfab.com/3d-models/bmw-g21-car-wrap-17c083df2b664fb2bb579af49c8d75b3
+* author:	joernard (https://sketchfab.com/joernard)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "BMW G21 Car Wrap" (https://sketchfab.com/3d-models/bmw-g21-car-wrap-17c083df2b664fb2bb579af49c8d75b3) by joernard (https://sketchfab.com/joernard) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
