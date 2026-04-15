@@ -21,10 +21,12 @@ const WRAP_COLORS = [
 // Body-related keywords — we skip glass, rubber, tyre, interior, brake
 const SKIP_KEYWORDS = ['glass', 'window', 'windshield', 'tyre', 'tire', 'rubber',
   'interior', 'seat', 'dash', 'steering', 'brake', 'disk', 'chrome_trim',
-  'light', 'lamp', 'exhaust', 'floor'];
+  'light', 'lamp', 'exhaust', 'floor', 'wheel', 'rim', 'cristal', 'vidrio', 'llanta', 'rueda', 'mirror', 'espejo', 'grill', 'parrilla', 'black', 'negro', 'plastic', 'plástico'];
 
-function shouldSkip(name) {
-  const n = name.toLowerCase();
+function shouldSkip(meshName, matName) {
+  const n = (meshName + " " + matName).toLowerCase();
+  // Si explícitamente se llama body o paint o carroceria, no lo saltamos.
+  if (n.includes('body') || n.includes('paint') || n.includes('carroceria') || n.includes('shell')) return false;
   return SKIP_KEYWORDS.some(k => n.includes(k));
 }
 
@@ -34,7 +36,7 @@ function CarModel({ path, wrapColor }) {
 
   scene.traverse((child) => {
     if (!child.isMesh || !child.material) return;
-    if (shouldSkip(child.name)) return; // Don't repaint glass/tyres
+    if (shouldSkip(child.name, child.material.name)) return; // Don't repaint glass/tyres
 
     // Clone material if needed to avoid mutating shared materials
     if (!child.userData.materialCloned) {

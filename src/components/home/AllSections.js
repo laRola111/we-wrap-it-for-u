@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 /* ────────────────────────────────────────────────────────
    SECTION: El Taller
@@ -127,8 +127,23 @@ export function MaterialsLab({ msg = {} }) {
   ];
 
   return (
-    <section className="section-materials" id="materiales">
-      <div className="section-inner">
+    <section className="section-materials" id="materiales" style={{ position: 'relative', overflow: 'hidden' }}>
+      <AnimatePresence>
+        <motion.div
+           key={active}
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 0.15 }}
+           exit={{ opacity: 0 }}
+           transition={{ duration: 0.8 }}
+           style={{
+             position: 'absolute', inset: 0,
+             background: materials[active].bg,
+             zIndex: 0, pointerEvents: 'none'
+           }}
+        />
+      </AnimatePresence>
+
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1 }}>
         <h2 className="section-title text-metallic">{m.title || 'Elige tu Acabado Premium.'}</h2>
         <p className="section-body max-600">
           {m.body || 'Selecciona entre nuestra curaduría de materiales importados de los mejores fabricantes del mundo (3M, Avery Dennison, Inozetek).'}
@@ -141,6 +156,9 @@ export function MaterialsLab({ msg = {} }) {
               onClick={() => setActive(i)}
               whileHover={{ scale: 1.03 }}
               data-hoverable="true"
+              style={{
+                borderColor: active === i ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.06)'
+              }}
             >
               <div className="material-sphere" style={{ background: mat.bg }} />
               <h4 className="material-name">{mat.name}</h4>

@@ -8,13 +8,13 @@ const projects = [
   {
     id: 1, type: 'foodtruck', title: 'Food Truck — Neón & Brand',
     before: 'https://images.unsplash.com/photo-1565097158282-1094bd0db2ab?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=900',
+    after:  '/foodtruck-wrap-1.png',
     material: 'Avery Dennison Gloss Dragon Fire Red', time: '3 días diseño + 2 días inst.', height: '420px'
   },
   {
     id: 2, type: 'carro', title: 'Superdeportivo — Chrome Mirror',
     before: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&q=80&w=900',
+    after:  '/car-wrap-1.png',
     material: '3M™ 1080 Gloss Gold Chrome', time: '4 días', height: '340px'
   },
   {
@@ -26,13 +26,13 @@ const projects = [
   {
     id: 4, type: 'carro', title: 'Sedan Premium — Matte Black',
     before: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1621993202320-b8ac9c1e3dfd?auto=format&fit=crop&q=80&w=900',
+    after:  '/car-wrap-2.png',
     material: '3M™ 1080 Matte Black M12', time: '3 días', height: '360px'
   },
   {
     id: 5, type: 'foodtruck', title: 'Street Kitchen — Full Brand',
     before: 'https://images.unsplash.com/photo-1565097158282-1094bd0db2ab?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=900',
+    after:  '/foodtruck-wrap-2.png',
     material: 'Impresión Digital 3M IJ180mC', time: '5 días diseño + 3 días inst.', height: '400px'
   },
   {

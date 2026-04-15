@@ -10,14 +10,14 @@
     "foodtrucks": "Food Trucks"
   },
   "hero": {
-    "eyebrow": "Rotulación de Élite · Vehicle Wrapping",
+    "eyebrow": "Rotulación de Élite",
     "title1": "No es solo un vehículo.",
     "titleAccent": "Es tu declaración",
     "title2": "de intenciones.",
     "sub": "En We Wrap It For U fusionamos diseño de vanguardia con instalación de precisión milimétrica. Transformamos metal en una extensión de tu identidad o de tu éxito comercial.",
     "btnPrimary": "Ver Galería de Transformaciones",
     "btnGhost": "Configurar mi Proyecto →",
-    "hint": "↓ Scroll para revelar"
+    "hint": "↓ Desliza para revelar"
   },
   "taller": {
     "eyebrow": "EXCELENCIA TÉCNICA",
@@ -26,13 +26,13 @@
   },
   "solutions": {
     "title": "Soluciones a Medida",
-    "s1Tag": "Personal Wraps / Luxury & Exotic",
+    "s1Tag": "Wraps Personales / Lujo y Exóticos",
     "s1Title": "Estilo Sin Límites.",
     "s1Body": "Para el entusiasta que busca exclusividad. Cambios de color totales, acabados satinados, mate, cromados o diseños personalizados que hacen que tu carro sea único en el mundo. Protegemos tu inversión con materiales que mantienen la pintura original intacta.",
-    "s2Tag": "Commercial Vans & Trucks",
+    "s2Tag": "Vans Comerciales y Camiones",
     "s2Title": "Autoridad en Movimiento.",
     "s2Body": "Tu flota es la cara de tu empresa. Diseñamos e instalamos gráficas que proyectan profesionalismo y confianza. Desde una sola unidad hasta flotas completas, aseguramos uniformidad y durabilidad industrial bajo cualquier condición climática.",
-    "s3Tag": "Food Truck Specialists",
+    "s3Tag": "Especialistas en Food Trucks",
     "s3Title": "El Imán de Miradas.",
     "s3Body": "Un Food Truck es un espectáculo visual. Creamos diseños vibrantes que cuentan la historia de tu marca y atraen clientes desde la distancia. Utilizamos vinilos de alto rendimiento resistentes al calor y a la limpieza constante."
   },
@@ -60,7 +60,7 @@
     "p4Body": "Aplicación en ambiente controlado, libre de polvo, con técnicas de remate en bordes para una cobertura total."
   },
   "foodtruck": {
-    "eyebrow": "FOOD TRUCK ELITE",
+    "eyebrow": "FOOD TRUCK ÉLITE",
     "title": "Tu Cocina merece un exterior<br />a la altura de tu sazón.",
     "body": "Entendemos los retos de un Food Truck: remaches, ventanas de servicio, generadores y exposición al calor. Nuestros wraps no solo son bellos; son armaduras de diseño que resisten la jornada diaria de tu negocio.",
     "l1": "Gráficos de alta definición que despiertan el apetito.",
@@ -96,7 +96,7 @@
     "successBody": "Un experto de We Wrap It For U te contactará en menos de 24 horas."
   },
   "footer": {
-    "slogan": "Engineering Beauty on Wheels.",
+    "slogan": "Ingeniería de Belleza sobre Ruedas.",
     "rights": "© 2026 We Wrap It For U. Todos los derechos reservados.",
     "credit1": "Diseño web por",
     "credit2": "Rueda La Rola Media"
@@ -112,11 +112,11 @@
     "timeLabel": "Tiempo:"
   },
   "lab": {
-    "title": "Interactive Design Lab",
+    "title": "Laboratorio de Diseño Interactivo",
     "subtitle": "Gira (clic+arrastrar), haz zoom (rueda del mouse) y experimenta con nuestros acabados premium en tiempo real.",
-    "colorsLabel": "Color Presets:",
+    "colorsLabel": "Opciones de Color:",
     "loading": "Instalando wrap en el laboratorio...",
-    "rotationLabel": "Auto Rota:"
+    "rotationLabel": "Rotación Automática:"
   },
   "impact": {
     "title": "El \"Impact Calculator\"",
