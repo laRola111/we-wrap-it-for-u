@@ -35,7 +35,7 @@ export default function ImpactCalculator() {
     <section className="calculator-section">
       <div className="calculator-container glass-panel">
         <div className="calc-header">
-          <h2 className="text-metallic">El "Impact Calculator"</h2>
+          <h2 className="text-metallic">El &quot;Impact Calculator&quot;</h2>
           <p>Mide el retorno de inversión visual que generará tu vehículo mes a mes.</p>
         </div>
 
