@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import '@/styles/sections/calculator.css'; // Will create this
 
-export default function ImpactCalculator() {
+export default function ImpactCalculator({ msg = {} }) {
+  const m = msg || {};
   const [kmPerDay, setKmPerDay] = useState(50);
   const [impressions, setImpressions] = useState(0);
 
@@ -35,14 +36,14 @@ export default function ImpactCalculator() {
     <section className="calculator-section">
       <div className="calculator-container glass-panel">
         <div className="calc-header">
-          <h2 className="text-metallic">El &quot;Impact Calculator&quot;</h2>
-          <p>Mide el retorno de inversión visual que generará tu vehículo mes a mes.</p>
+          <h2 className="text-metallic">{m.title || 'El "Impact Calculator"'}</h2>
+          <p>{m.subtitle || 'Mide el retorno de inversión visual que generará tu vehículo mes a mes.'}</p>
         </div>
 
         <div className="calc-body">
           <div className="slider-container">
-            <label>¿Cuántos kilómetros recorre tu vehículo al día?</label>
-            <div className="slider-value">{kmPerDay} km / día</div>
+            <label>{m.question || '¿Cuántos kilómetros recorre tu vehículo al día?'}</label>
+            <div className="slider-value">{kmPerDay} {m.km || 'km / día'}</div>
             <input 
               type="range" 
               min="10" 
@@ -52,13 +53,13 @@ export default function ImpactCalculator() {
               className="accent-slider"
             />
             <div className="slider-labels">
-              <span>Ruta Corta</span>
-              <span>Ruta Intensiva</span>
+              <span>{m.short || 'Ruta Corta'}</span>
+              <span>{m.long || 'Ruta Intensiva'}</span>
             </div>
           </div>
 
           <div className="result-container">
-            <div className="result-label">Impresiones visuales estimadas al mes:</div>
+            <div className="result-label">{m.resultLabel || 'Impresiones visuales estimadas al mes:'}</div>
             <motion.div 
               key={impressions}
               initial={{ scale: 1.1, color: '#fff' }}
@@ -68,7 +69,7 @@ export default function ImpactCalculator() {
               {impressions.toLocaleString()}
             </motion.div>
             <div className="result-comparison">
-              vs. valla publicitaria tradicional (Costo: $1,500/mes)
+              {m.comparison || 'vs. valla publicitaria tradicional (Costo: $1,500/mes)'}
             </div>
           </div>
         </div>

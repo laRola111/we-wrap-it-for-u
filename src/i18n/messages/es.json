@@ -1,15 +1,144 @@
 {
   "navbar": {
-    "services": "Servicios",
-    "portfolio": "Portafolio",
-    "contact": "Contacto",
-    "about": "Nosotros",
-    "quote": "Cotizar"
+    "projects": "Proyectos ▾",
+    "workshop": "El Taller",
+    "materials": "Materiales",
+    "process": "Proceso",
+    "quote": "Solicitar Presupuesto",
+    "luxury": "Carros de Lujo",
+    "vans": "Vans Comerciales",
+    "foodtrucks": "Food Trucks"
   },
-  "sectionOne": {
-    "title": "Transforma tu vehículo hoy",
-    "description": "Con nuestros diseños personalizados, llevamos tu carro al siguiente nivel. ¡Hazlo único y resalta en la calle!",
-    "quoteButton": "Cotiza ahora"
+  "hero": {
+    "eyebrow": "Rotulación de Élite · Vehicle Wrapping",
+    "title1": "No es solo un vehículo.",
+    "titleAccent": "Es tu declaración",
+    "title2": "de intenciones.",
+    "sub": "En We Wrap It For U fusionamos diseño de vanguardia con instalación de precisión milimétrica. Transformamos metal en una extensión de tu identidad o de tu éxito comercial.",
+    "btnPrimary": "Ver Galería de Transformaciones",
+    "btnGhost": "Configurar mi Proyecto →",
+    "hint": "↓ Scroll para revelar"
+  },
+  "taller": {
+    "eyebrow": "EXCELENCIA TÉCNICA",
+    "title": "Donde la precisión del software encuentra<br />la maestría del instalador.",
+    "body": "En We Wrap It For U, no pegamos vinilos; esculpimos visiones. Utilizamos escaneado digital para asegurar que cada línea de diseño encaje perfectamente con las curvas de tu vehículo. Nuestra técnica de instalación sin costuras visibles garantiza un acabado que desafía incluso a la pintura original."
+  },
+  "solutions": {
+    "title": "Soluciones a Medida",
+    "s1Tag": "Personal Wraps / Luxury & Exotic",
+    "s1Title": "Estilo Sin Límites.",
+    "s1Body": "Para el entusiasta que busca exclusividad. Cambios de color totales, acabados satinados, mate, cromados o diseños personalizados que hacen que tu carro sea único en el mundo. Protegemos tu inversión con materiales que mantienen la pintura original intacta.",
+    "s2Tag": "Commercial Vans & Trucks",
+    "s2Title": "Autoridad en Movimiento.",
+    "s2Body": "Tu flota es la cara de tu empresa. Diseñamos e instalamos gráficas que proyectan profesionalismo y confianza. Desde una sola unidad hasta flotas completas, aseguramos uniformidad y durabilidad industrial bajo cualquier condición climática.",
+    "s3Tag": "Food Truck Specialists",
+    "s3Title": "El Imán de Miradas.",
+    "s3Body": "Un Food Truck es un espectáculo visual. Creamos diseños vibrantes que cuentan la historia de tu marca y atraen clientes desde la distancia. Utilizamos vinilos de alto rendimiento resistentes al calor y a la limpieza constante."
+  },
+  "materials": {
+    "title": "Elige tu Acabado Premium.",
+    "body": "Selecciona entre nuestra curaduría de materiales importados de los mejores fabricantes del mundo (3M, Avery Dennison, Inozetek).",
+    "m1Sub": "Reflejos suaves para líneas elegantes.",
+    "m2Sub": "Sofisticación absoluta sin distracciones.",
+    "m3Sub": "El brillo profundo de una pintura recién aplicada.",
+    "m4Sub": "Tu imaginación impresa en resolución 8K."
+  },
+  "proceso": {
+    "title": "El Proceso",
+    "p1Num": "Paso 01",
+    "p1Title": "Consulta & Scan",
+    "p1Body": "Analizamos la estructura de tu vehículo y tus objetivos estéticos para crear un lienzo digital perfecto.",
+    "p2Num": "Paso 02",
+    "p2Title": "Diseño de Autor",
+    "p2Body": "Nuestros diseñadores crean renders realistas. No instalamos nada hasta que te enamores del diseño en pantalla.",
+    "p3Num": "Paso 03",
+    "p3Title": "Preparación Quirúrgica",
+    "p3Body": "Descontaminación profunda de la superficie. El secreto de un wrap eterno está en lo que no se ve.",
+    "p4Num": "Paso 04",
+    "p4Title": "Instalación de Precisión",
+    "p4Body": "Aplicación en ambiente controlado, libre de polvo, con técnicas de remate en bordes para una cobertura total."
+  },
+  "foodtruck": {
+    "eyebrow": "FOOD TRUCK ELITE",
+    "title": "Tu Cocina merece un exterior<br />a la altura de tu sazón.",
+    "body": "Entendemos los retos de un Food Truck: remaches, ventanas de servicio, generadores y exposición al calor. Nuestros wraps no solo son bellos; son armaduras de diseño que resisten la jornada diaria de tu negocio.",
+    "l1": "Gráficos de alta definición que despiertan el apetito.",
+    "l2": "Vinilos con laminado de protección UV para evitar la decoloración.",
+    "l3": "Diseño estratégico para legibilidad de menús y redes sociales.",
+    "btn": "Quiero un wrap para mi Food Truck →"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "q1": "¿Daña la pintura original?",
+    "a1": "Al contrario, el vinilo actúa como una capa protectora contra rayos UV y pequeños escombros de la carretera.",
+    "q2": "¿Cuánto tiempo toma?",
+    "a2": "Depende del proyecto. Un carro personal puede tomar 3-5 días; un Food Truck de gran formato entre 5 y 7 días de instalación artesanal.",
+    "q3": "¿Cómo lo cuido?",
+    "a3": "Te entregamos una guía de cuidados post-instalación y recomendamos productos específicos para mantener el acabado como el primer día."
+  },
+  "quote": {
+    "title": "¿Listo para la transformación?",
+    "body": "Cuéntanos sobre tu vehículo y lo que tienes en mente. Nuestro equipo de diseño te contactará para iniciar el proceso.",
+    "q1": "¿Qué máquina vamos a transformar?",
+    "v1": "Carro",
+    "v2": "Van",
+    "v3": "SUV",
+    "v4": "Food Truck",
+    "v5": "Otro",
+    "q2": "Describe tu visión (Color, estilo, logos...)",
+    "placeholder1": "Quiero un matte negro con mis logos corporativos en los laterales...",
+    "q3": "Presupuesto estimado",
+    "placeholder2": "Ej: $2,000 – $5,000",
+    "back": "← Atrás",
+    "send": "Enviar a los Expertos →",
+    "successTitle": "¡Estamos preparando tus renders!",
+    "successBody": "Un experto de We Wrap It For U te contactará en menos de 24 horas."
+  },
+  "footer": {
+    "slogan": "Engineering Beauty on Wheels.",
+    "rights": "© 2026 We Wrap It For U. Todos los derechos reservados.",
+    "credit1": "Diseño web por",
+    "credit2": "Rueda La Rola Media"
+  },
+  "gallery": {
+    "title": "Galería de Transformaciones",
+    "subtitle": "Observa nuestros resultados. Desliza para comparar el antes y después en distintas categorías.",
+    "all": "Todos",
+    "cars": "Carros",
+    "vans": "Vans",
+    "foodtrucks": "Food Trucks",
+    "materialLabel": "Material:",
+    "timeLabel": "Tiempo:"
+  },
+  "lab": {
+    "title": "Interactive Design Lab",
+    "subtitle": "Gira (clic+arrastrar), haz zoom (rueda del mouse) y experimenta con nuestros acabados premium en tiempo real.",
+    "colorsLabel": "Color Presets:",
+    "loading": "Instalando wrap en el laboratorio...",
+    "rotationLabel": "Auto Rota:"
+  },
+  "impact": {
+    "title": "El \"Impact Calculator\"",
+    "subtitle": "Mide el retorno de inversión visual que generará tu vehículo mes a mes.",
+    "question": "¿Cuántos kilómetros recorre tu vehículo al día?",
+    "km": "km / día",
+    "short": "Ruta Corta",
+    "long": "Ruta Intensiva",
+    "resultLabel": "Impresiones visuales estimadas al mes:",
+    "comparison": "vs. valla publicitaria tradicional (Costo: $1,500/mes)"
+  },
+  "footerCTA": {
+    "title": "Hablemos de tu próximo gran activo",
+    "subtitle": "Deja de ser invisible. Envíanos los detalles de tu vehículo y te contactaremos para una auditoría de diseño.",
+    "name": "Tu Nombre o Empresa",
+    "email": "Correo Electrónico",
+    "type": "Tipo de Vehículo",
+    "type1": "Auto (Sedan/Hatchback)",
+    "type2": "Camioneta (SUV/Pickup)",
+    "type3": "Van Comercial",
+    "type4": "Food Truck / Trailer",
+    "btn": "Solicitar Cotización 3D",
+    "sticky": "Reservar Auditoría de Diseño"
   }
-  }
-  
+}

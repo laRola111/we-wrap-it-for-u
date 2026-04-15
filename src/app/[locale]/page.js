@@ -25,22 +25,23 @@ export const metadata = {
 export default async function Home({ params }) {
   const resolvedParams = await params;
   const { locale } = resolvedParams;
+  const messages = await getMessages(locale);
 
   return (
     <>
-      <SiteNav locale={locale} />
+      <SiteNav locale={locale} msg={messages.navbar} />
       <main className="home-container">
-        <WrapHero />
-        <TransformationGallery />
-        <ElTaller />
-        <TailoredSolutions />
-        <MaterialsLab />
-        <InteractiveDesignLab />
-        <ProcesoWrap />
-        <FoodTruckElite />
-        <FAQSection />
-        <QuoteForm />
-        <SiteFooter />
+        <WrapHero msg={messages.hero} />
+        <TransformationGallery msg={messages.gallery} />
+        <ElTaller msg={messages.taller} />
+        <TailoredSolutions msg={messages.solutions} />
+        <MaterialsLab msg={messages.materials} />
+        <InteractiveDesignLab msg={messages.lab} />
+        <ProcesoWrap msg={messages.proceso} />
+        <FoodTruckElite msg={messages.foodtruck} />
+        <FAQSection msg={messages.faq} />
+        <QuoteForm msg={messages.quote} />
+        <SiteFooter msg={messages.footer} />
       </main>
     </>
   );

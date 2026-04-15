@@ -75,7 +75,8 @@ const MODELS = [
   { id: 'truck', label: 'Service Truck',  icon: '🚐', path: '/models/truck/scene.gltf' },
 ];
 
-export default function InteractiveDesignLab() {
+export default function InteractiveDesignLab({ msg = {} }) {
+  const m = msg || {};
   const [activeModel, setActiveModel] = useState(MODELS[0]);
   const [activeColor, setActiveColor] = useState(WRAP_COLORS[0]);
 
@@ -83,8 +84,8 @@ export default function InteractiveDesignLab() {
     <section className="lab-section" id="lab">
       <div className="lab-inner">
         <div className="lab-header">
-          <h2 className="text-metallic">The Design Lab</h2>
-          <p>Cambia el color del wrap en tiempo real · Arrastra para rotar el modelo</p>
+          <h2 className="text-metallic">{m.title || 'The Design Lab'}</h2>
+          <p>{m.subtitle || 'Cambia el color del wrap en tiempo real · Arrastra para rotar el modelo'}</p>
         </div>
 
         <div className="lab-layout">

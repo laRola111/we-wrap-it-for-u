@@ -3,8 +3,10 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import '@/styles/sections/arknica-hero.css';
 
-export default function WrapHero() {
+export default function WrapHero({ msg = {} }) {
   const scannerRef = useRef(null);
+
+  const m = msg || {};
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -56,26 +58,24 @@ export default function WrapHero() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           className="hero-text"
         >
-          <span className="hero-eyebrow">Rotulación de Élite · Vehicle Wrapping</span>
+          <span className="hero-eyebrow">{m.eyebrow || 'Rotulación de Élite · Vehicle Wrapping'}</span>
           <h1 className="hero-h1">
-            No es solo un vehículo.<br />
-            <span className="hero-accent">Es tu declaración</span><br />
-            de intenciones.
+            {m.title1 || 'No es solo un vehículo.'}<br />
+            <span className="hero-accent">{m.titleAccent || 'Es tu declaración'}</span><br />
+            {m.title2 || 'de intenciones.'}
           </h1>
           <p className="hero-sub">
-            En We Wrap It For U fusionamos diseño de vanguardia con instalación de
-            precisión milimétrica. Transformamos metal en una extensión de tu identidad
-            o de tu éxito comercial.
+            {m.sub || 'En We Wrap It For U fusionamos diseño de vanguardia con instalación de precisión milimétrica. Transformamos metal en una extensión de tu identidad o de tu éxito comercial.'}
           </p>
           <div className="hero-buttons">
             <a href="#galeria" className="btn-primary" data-hoverable="true">
-              Ver Galería de Transformaciones
+              {m.btnPrimary || 'Ver Galería de Transformaciones'}
             </a>
             <a href="#lab" className="btn-ghost" data-hoverable="true">
-              Configurar mi Proyecto →
+              {m.btnGhost || 'Configurar mi Proyecto →'}
             </a>
           </div>
-          <p className="hero-hint">↓ Scroll para revelar</p>
+          <p className="hero-hint">{m.hint || '↓ Scroll para revelar'}</p>
         </motion.div>
       </div>
 

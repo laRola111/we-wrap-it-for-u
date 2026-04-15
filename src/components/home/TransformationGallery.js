@@ -43,7 +43,8 @@ const projects = [
   },
 ];
 
-export default function TransformationGallery() {
+export default function TransformationGallery({ msg = {} }) {
+  const m = msg || {};
   const [filter, setFilter] = useState('all');
   const [activeProject, setActiveProject] = useState(null);
 
@@ -52,14 +53,14 @@ export default function TransformationGallery() {
   return (
     <section className="transformation-gallery" id="galeria">
       <div className="gallery-header">
-        <h2 className="text-metallic">The Transformation Gallery</h2>
-        <p>No creamos diseños genéricos. Creamos activos irresistibles.</p>
+        <h2 className="text-metallic">{m.title || 'Galería de Transformaciones'}</h2>
+        <p>{m.subtitle || 'Observa nuestros resultados. Desliza para comparar el antes y después en distintas categorías.'}</p>
         
         <div className="gallery-filters">
-          <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>Todos</button>
-          <button className={filter === 'carro' ? 'active' : ''} onClick={() => setFilter('carro')}>Carros</button>
-          <button className={filter === 'van' ? 'active' : ''} onClick={() => setFilter('van')}>Vans</button>
-          <button className={filter === 'foodtruck' ? 'active' : ''} onClick={() => setFilter('foodtruck')}>Food Trucks</button>
+          <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>{m.all || 'Todos'}</button>
+          <button className={filter === 'carro' ? 'active' : ''} onClick={() => setFilter('carro')}>{m.cars || 'Carros'}</button>
+          <button className={filter === 'van' ? 'active' : ''} onClick={() => setFilter('van')}>{m.vans || 'Vans'}</button>
+          <button className={filter === 'foodtruck' ? 'active' : ''} onClick={() => setFilter('foodtruck')}>{m.foodtrucks || 'Food Trucks'}</button>
         </div>
       </div>
 
@@ -91,7 +92,7 @@ export default function TransformationGallery() {
       {/* Technical Vault Modal / Before-After Slider */}
       <AnimatePresence>
         {activeProject && (
-          <BeforeAfterModal project={activeProject} onClose={() => setActiveProject(null)} />
+          <BeforeAfterModal project={activeProject} onClose={() => setActiveProject(null)} m={m} />
         )}
       </AnimatePresence>
     </section>
@@ -99,7 +100,7 @@ export default function TransformationGallery() {
 }
 
 // Subcomponente: Modal con Slider Draggeable
-function BeforeAfterModal({ project, onClose }) {
+function BeforeAfterModal({ project, onClose, m }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const containerRef = useRef(null);
 
@@ -150,14 +151,14 @@ function BeforeAfterModal({ project, onClose }) {
 
         {/* Ficha Técnica */}
         <div className="tech-sheet">
-          <h3>Ficha Técnica: {project.title}</h3>
+          <h3>{m.materialLabel ? m.materialLabel.replace(':', '') : 'Ficha Técnica'}: {project.title}</h3>
           <div className="tech-details">
             <div className="tech-item">
-              <span className="label">Material</span>
+              <span className="label">{m.materialLabel || 'Material:'}</span>
               <span className="value">{project.material}</span>
             </div>
             <div className="tech-item">
-              <span className="label">Instalación</span>
+              <span className="label">{m.timeLabel || 'Tiempo Total:'}</span>
               <span className="value">{project.time}</span>
             </div>
           </div>
