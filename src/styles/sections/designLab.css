@@ -75,7 +75,7 @@
 
 /* Vehicle Viewer Center */
 .vehicle-viewer {
-  background: radial-gradient(circle at center, rgba(30, 30, 30, 0.5) 0%, transparent 70%);
+  background: linear-gradient(180deg, rgba(30, 30, 30, 0.5) 0%, transparent 70%);
   border-radius: 20px;
   position: relative;
   display: flex;
@@ -188,8 +188,8 @@
 }
 
 /* Lighting generic modifier */
-.lighting-day .vehicle-viewer { background: radial-gradient(circle at center, #87ceeb 0%, transparent 100%); }
-.lighting-neon .vehicle-viewer { background: radial-gradient(circle at center, rgba(136, 0, 255, 0.2) 0%, transparent 100%); }
+.lighting-day .vehicle-viewer { background: linear-gradient(180deg, #87ceeb 0%, transparent 100%); }
+.lighting-neon .vehicle-viewer { background: linear-gradient(180deg, rgba(136, 0, 255, 0.2) 0%, transparent 100%); }
 
 @media (max-width: 1024px) {
   .lab-grid {

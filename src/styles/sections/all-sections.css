@@ -220,7 +220,8 @@
   top: 2rem; bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  width: min(900px, 90%);
+  width: 90%;
+  max-width: 900px;
   border-radius: 20px;
   overflow: hidden;
   background-size: contain;    /* Show full image, no crop */

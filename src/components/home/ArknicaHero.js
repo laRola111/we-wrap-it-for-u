@@ -6,51 +6,49 @@ import '@/styles/sections/arknica-hero.css';
 export default function WrapHero() {
   const scannerRef = useRef(null);
 
-  // Scroll-based reveal: as user scrolls DOWN, more of bg-hero-2 is revealed
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const hero = scannerRef.current?.closest('.wrap-hero');
+    const el = scannerRef.current;
+    if (!el) return;
+
+    // Set initial mask via JS (avoids cssnano crash)
+    el.style.opacity = '1';
+    el.style.WebkitMaskImage = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
+    el.style.maskImage       = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
+
+    const hero = el.closest('.wrap-hero');
     if (!hero) return;
 
     const onScroll = () => {
-      if (!scannerRef.current) return;
       const heroH   = hero.offsetHeight;
-      // How far we've scrolled INTO the hero section (0 → heroH)
       const scrolled = Math.min(window.scrollY, heroH);
-      // Progress: 0 at top, 1 at bottom of hero
       const progress = scrolled / heroH;
 
-      // Grow the reveal circle from 0% at top to 100vw at bottom
-      const maxR    = Math.hypot(window.innerWidth, window.innerHeight);
-      const radius  = Math.round(50 + progress * maxR);
-      // Anchor: center of the screen
-      const cx = Math.round(window.innerWidth / 2);
-      const cy = Math.round(window.innerHeight / 2);
+      const maxR   = Math.hypot(window.innerWidth, window.innerHeight);
+      const radius = Math.round(50 + progress * maxR);
+      const cx     = Math.round(window.innerWidth / 2);
+      const cy     = Math.round(window.innerHeight / 2);
 
-      scannerRef.current.style.webkitMaskImage =
-        `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
-      scannerRef.current.style.maskImage =
-        `radial-gradient(circle ${radius}px at ${cx}px ${cy}py, black 90%, transparent 100%)`;
+      const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
+      el.style.WebkitMaskImage = grad;
+      el.style.maskImage       = grad;
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // Fire once on mount
+    onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <section className="wrap-hero">
-      {/* BASE: bg-hero-1 (dark, always visible) */}
       <div className="hero-base" style={{ backgroundImage: 'url(/bg-hero-1.png)' }} />
       <div className="hero-vignette" />
 
-      {/* SCROLL REVEAL: bg-hero-2 (unveiled as user scrolls) */}
       <div className="hero-scanner scroll-reveal" ref={scannerRef}>
         <div className="hero-reveal" style={{ backgroundImage: 'url(/bg-hero-2.png)' }} />
       </div>
 
-      {/* HERO TEXT */}
       <div className="hero-content">
         <motion.div
           initial={{ opacity: 0, y: 36 }}
