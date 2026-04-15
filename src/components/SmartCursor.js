@@ -9,8 +9,10 @@ const SmartCursor = () => {
   });
   
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
+    setIsMobile(window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768);
     const updateMousePosition = (e) => {
       setMousePosition({
         x: e.clientX,
@@ -59,6 +61,8 @@ const SmartCursor = () => {
       mixBlendMode: 'normal'
     }
   };
+
+  if (isMobile) return null;
 
   return (
     <motion.div

@@ -157,8 +157,12 @@
   pointer-events: none;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
+  .wrap-hero { min-height: 500px; height: 90vh; }
+  .hero-base, .hero-reveal {
+    background-size: cover;
+    background-position: center 80%;
+  }
   .hero-content { padding: 0 1.5rem; }
   .hero-h1    { font-size: 2.6rem; }
   .scanner-ring { width: 360px; height: 360px; }
@@ -259,7 +263,12 @@
 
 @media (max-width: 768px) {
   .arknica-nav { padding: 1rem 1.5rem; }
-  .arknica-nav.nav-scrolled { padding: 0.7rem 1.5rem; }
+  .arknica-nav.nav-scrolled { 
+    padding: 0.7rem 1.5rem; 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(5,5,5, 0.98);
+  }
   .desktop-links, .nav-cta { display: none; }
   .hamburger { display: block; }
 }

@@ -15,7 +15,8 @@ export function ElTaller({ msg = {} }) {
         style={{
           position: 'absolute', top: '-30%', right: '-10%', width: '800px', height: '800px',
           background: 'radial-gradient(circle, rgba(229,26,35,0.15) 0%, transparent 70%)',
-          borderRadius: '50%', zIndex: 0, pointerEvents: 'none'
+          borderRadius: '50%', zIndex: 0, pointerEvents: 'none',
+          willChange: 'transform, opacity'
         }}
       />
       <div className="section-inner" style={{ position: 'relative', zIndex: 1 }}>
@@ -93,10 +94,10 @@ export function TailoredSolutions({ msg = {} }) {
                 overflow: 'hidden',
                 position: 'relative'
               }}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.15, type: 'spring', bounce: 0.3 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: i * 0.1, type: 'spring', bounce: 0.2 }}
               whileHover={{ scale: 1.02 }}
             >
               <div style={{ position: 'relative', zIndex: 2 }}>
@@ -138,7 +139,8 @@ export function MaterialsLab({ msg = {} }) {
            style={{
              position: 'absolute', inset: 0,
              background: materials[active].bg,
-             zIndex: 0, pointerEvents: 'none'
+             zIndex: 0, pointerEvents: 'none',
+             willChange: 'opacity'
            }}
         />
       </AnimatePresence>

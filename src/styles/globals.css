@@ -29,8 +29,13 @@ body {
   color: var(--color-text-main);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  /* Hide default cursor - we use smart cursor */
-  cursor: none;
+}
+
+/* Solo ocultar el cursor nativo en dispositivos con un puntero preciso (mouse) */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
 }
 
 a {
