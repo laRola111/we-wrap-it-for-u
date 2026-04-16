@@ -22,24 +22,52 @@ export default function WrapHero({ msg = {} }) {
     const hero = el.closest('.wrap-hero');
     if (!hero) return;
 
-    const onScroll = () => {
-      const heroH   = hero.offsetHeight;
-      const scrolled = Math.min(window.scrollY, heroH);
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    
+    // Pre-calculate expensive math that only changes on resize
+    let heroH = hero.offsetHeight;
+    let maxR = Math.hypot(window.innerWidth, window.innerHeight);
+    let cx = Math.round(window.innerWidth / 2);
+    let cy = Math.round(window.innerHeight / 2);
+
+    const updateMask = () => {
+      const scrolled = Math.min(lastScrollY, heroH);
       const progress = scrolled / heroH;
-
-      const maxR   = Math.hypot(window.innerWidth, window.innerHeight);
       const radius = Math.round(50 + progress * maxR);
-      const cx     = Math.round(window.innerWidth / 2);
-      const cy     = Math.round(window.innerHeight / 2);
-
+      
       const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
       el.style.WebkitMaskImage = grad;
       el.style.maskImage       = grad;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateMask);
+        ticking = true;
+      }
+    };
+
+    const onResize = () => {
+      heroH = hero.offsetHeight;
+      maxR = Math.hypot(window.innerWidth, window.innerHeight);
+      cx = Math.round(window.innerWidth / 2);
+      cy = Math.round(window.innerHeight / 2);
+      onScroll();
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    
+    // Initial call
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   return (
