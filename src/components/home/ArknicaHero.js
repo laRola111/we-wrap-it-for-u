@@ -19,11 +19,9 @@ export default function WrapHero({ msg = {} }) {
     
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
-      el.style.clipPath = 'circle(50px at 50% 50%)';
-      el.style.WebkitClipPath = 'circle(50px at 50% 50%)';
-      el.style.maskImage = 'none';
-      el.style.WebkitMaskImage = 'none';
+      el.classList.add('mobile-auto-reveal');
     } else {
+      el.classList.remove('mobile-auto-reveal');
       el.style.WebkitMaskImage = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
       el.style.maskImage       = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
       el.style.clipPath = 'none';
@@ -43,22 +41,19 @@ export default function WrapHero({ msg = {} }) {
     let cy = Math.round(window.innerHeight / 2);
 
     const updateMask = () => {
+      if (window.innerWidth <= 768) {
+        // En móvil no usamos scroll reveal. Se manejará con animación CSS pura en la clase.
+        ticking = false;
+        return;
+      }
+
       const scrolled = Math.min(lastScrollY, heroH);
       const progress = scrolled / heroH;
       const radius = Math.round(50 + progress * maxR);
       
-      if (window.innerWidth <= 768) {
-        // Usa clipPath hardware accelerated para móviles 
-        const clip = `circle(${radius}px at ${cx}px ${cy}px)`;
-        el.style.clipPath = clip;
-        el.style.WebkitClipPath = clip;
-      } else {
-        // Usa maskImage para webs (suavizado)
-        const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
-        el.style.WebkitMaskImage = grad;
-        el.style.maskImage       = grad;
-      }
-      
+      const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
+      el.style.WebkitMaskImage = grad;
+      el.style.maskImage       = grad;
       ticking = false;
     };
 

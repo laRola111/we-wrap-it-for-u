@@ -81,6 +81,8 @@ export default function InteractiveDesignLab({ msg = {} }) {
   const m = msg || {};
   const [activeModel, setActiveModel] = useState(MODELS[0]);
   const [activeColor, setActiveColor] = useState(WRAP_COLORS[0]);
+  const [load3D, setLoad3D] = useState(false);
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false;
 
   return (
     <section className="lab-section" id="lab">
@@ -126,35 +128,59 @@ export default function InteractiveDesignLab({ msg = {} }) {
 
           {/* 3D CANVAS */}
           <div className="lab-canvas-wrapper">
-            <Canvas
-              shadows
-              dpr={[1, 1.5]}
-              camera={{ position: [0, 0, 10], fov: 40 }}
-            >
-              <Suspense fallback={<Fallback />}>
-                <Stage
-                  environment="city"
-                  intensity={0.8}
-                  adjustCamera={1.2}
-                  shadows={{ type: 'contact', opacity: 0.5, blur: 2 }}
+            {(!isMobile || load3D) ? (
+              <>
+                <Canvas
+                  shadows
+                  dpr={[1, 1.5]}
+                  camera={{ position: [0, 0, 10], fov: 40 }}
                 >
-                  <PresentationControls
-                    global
-                    speed={1.5}
-                    zoom={0.7}
-                    polar={[-0.2, 0.3]}
-                    azimuth={[-Infinity, Infinity]}
-                  >
-                    <CarModel
-                      key={activeModel.id + activeColor.id}
-                      path={activeModel.path}
-                      wrapColor={activeColor}
-                    />
-                  </PresentationControls>
-                </Stage>
-              </Suspense>
-            </Canvas>
-            <p className="canvas-hint">Arrastra para rotar · Pellizca para zoom</p>
+                  <Suspense fallback={<Fallback />}>
+                    <Stage
+                      environment="city"
+                      intensity={0.8}
+                      adjustCamera={1.2}
+                      shadows={{ type: 'contact', opacity: 0.5, blur: 2 }}
+                    >
+                      <PresentationControls
+                        global
+                        speed={1.5}
+                        zoom={1.0}
+                        polar={[-0.2, 0.3]}
+                        azimuth={[-Infinity, Infinity]}
+                      >
+                        <CarModel
+                          key={activeModel.id + activeColor.id}
+                          path={activeModel.path}
+                          wrapColor={activeColor}
+                        />
+                      </PresentationControls>
+                    </Stage>
+                  </Suspense>
+                </Canvas>
+                <p className="canvas-hint">Arrastra para rotar · Pellizca para zoom</p>
+              </  >
+            ) : (
+              <div 
+                className="mobile-canvas-placeholder" 
+                onClick={() => setLoad3D(true)}
+                style={{
+                  width: '100%', height: '100%', display: 'flex', flexDirection: 'column', 
+                  alignItems: 'center', justifyContent: 'center', 
+                  background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+                  borderRadius: '12px'
+                }}
+              >
+                <span style={{ fontSize: '2rem', marginBottom: '1rem' }}>🚘</span>
+                <span style={{ fontFamily: 'Outfit', fontWeight: 600, color: 'white' }}>Visor 3D</span>
+                <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.5rem' }}>
+                  Toca para activar e interactuar
+                </span>
+                <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '0.3rem' }}>
+                  Ahorra batería mientras scrolleas
+                </span>
+              </div>
+            )}
           </div>
 
           {/* RIGHT PANEL */}

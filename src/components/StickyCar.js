@@ -8,22 +8,31 @@ const StickyCar = () => {
   const [prevSection, setPrevSection] = useState(1);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const screenHeight = window.innerHeight;
-      const fullPageHeight = document.documentElement.scrollHeight;
-      const scrollPosition = scrollY / (fullPageHeight - screenHeight);
+    let ticking = false;
+    let windowHeight = window.innerHeight;
+    let fullHeight = document.documentElement.scrollHeight;
 
-      if (scrollPosition < 0.180) {
-        updateSection(1);
-      } else if (scrollPosition < 0.508) {
-        updateSection(2);
-      } else if (scrollPosition < 0.927) {
-        updateSection(3);
-      } else if (scrollPosition < 1.5) {
-        updateSection(4);
-      } else {
-        updateSection(0);
+    const onResize = () => {
+      windowHeight = window.innerHeight;
+      fullHeight = document.documentElement.scrollHeight;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const scrollPosition = scrollY / (fullHeight - windowHeight);
+
+          let newSection = 0;
+          if (scrollPosition < 0.180) newSection = 1;
+          else if (scrollPosition < 0.508) newSection = 2;
+          else if (scrollPosition < 0.927) newSection = 3;
+          else if (scrollPosition < 1.5) newSection = 4;
+
+          updateSection(newSection);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -34,11 +43,17 @@ const StickyCar = () => {
       }
     };
 
-    // Llamar a handleScroll al cargar la página para detectar la sección activa
+    // Initial check
+    onResize();
     handleScroll();
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [activeSection]);
 
   return (

@@ -1,6 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import '@/styles/sections/gallery.css';
 
 // Data simulada con imágenes reales de car wrap de Unsplash
@@ -79,7 +80,14 @@ export default function TransformationGallery({ msg = {} }) {
               style={{ height: project.height }}
               onClick={() => setActiveProject(project)}
             >
-              <img src={project.after} alt={project.title} className="masonry-img" />
+              <Image 
+                src={project.after} 
+                alt={project.title} 
+                fill 
+                sizes="(max-width: 768px) 100vw, 33vw"
+                style={{ objectFit: 'cover' }}
+                className="masonry-img"
+              />
               <div className="masonry-overlay">
                 <h3>{project.title}</h3>
                 <span>Ver Transformación</span>
@@ -132,13 +140,16 @@ function BeforeAfterModal({ project, onClose, m }) {
           onTouchMove={handleDrag}
         >
           {/* Capa Base: After (Rotulado) */}
-          <div className="img-layer img-after" style={{ backgroundImage: `url(${project.after})` }}></div>
+          <div className="img-layer img-after">
+            <Image src={project.after} alt="After" fill style={{ objectFit: 'cover' }} sizes="100vw" />
+          </div>
           
           {/* Capa Superior: Before (Gris) cortada por el slider */}
           <div className="img-layer img-before" style={{ 
-            backgroundImage: `url(${project.before})`,
             clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`
-          }}></div>
+          }}>
+            <Image src={project.before} alt="Before" fill style={{ objectFit: 'cover' }} sizes="100vw" />
+          </div>
 
           {/* Línea del Slider */}
           <div className="slider-line" style={{ left: `${sliderPosition}%` }}>

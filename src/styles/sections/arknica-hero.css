@@ -47,6 +47,19 @@
   mask-repeat: no-repeat;
 }
 
+@keyframes mobileRevealFlow {
+  0%   { clip-path: circle(5% at 50% 50%); -webkit-clip-path: circle(5% at 50% 50%); }
+  100% { clip-path: circle(150% at 50% 50%); -webkit-clip-path: circle(150% at 50% 50%); }
+}
+
+.mobile-auto-reveal {
+  opacity: 1 !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  animation: mobileRevealFlow 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 1.5s;
+}
+
 .hero-reveal {
   width: 100%; height: 100%;
   background-size: cover;
