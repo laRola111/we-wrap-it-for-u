@@ -10,10 +10,17 @@
   overflow: hidden;
   background: #050505;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* Ensure touch events work without blocking the page scroll */
   touch-action: pan-y;
+}
+
+.hero-visual-area {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* BASE LAYER: bg-hero-1 */
@@ -173,19 +180,66 @@
 }
 
 @media (max-width: 768px) {
-  .wrap-hero { min-height: 500px; height: 90vh; }
+  .wrap-hero { 
+    height: auto; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px; /* Suficiente para limpiar la navbar fija (48px logo + padding) */
+  }
+
+  .hero-visual-area {
+    position: relative; /* Cambiado de sticky para evitar solapamientos durante la lectura del texto */
+    width: 100%;
+    height: 45vh; /* Altura optimizada para mostrar el auto completo en celular sin scroll excesivo */
+    overflow: hidden;
+  }
+
   .hero-base, .hero-reveal {
-    background-size: contain; /* Ajusta la imagen sin recortar */
-    background-position: center top; /* Alineado arriba para que el auto se note bien y no flote en negro */
+    background-size: contain;
+    background-position: center bottom;
     background-color: transparent;
     background-repeat: no-repeat;
-    /* Ajustamos el margin superior vía clip si el usuario lo necesita */
   }
-  .hero-content { padding: 0 1.5rem; }
-  .hero-h1    { font-size: 2.6rem; }
-  .scanner-ring { width: 360px; height: 360px; }
-  .hero-scanner {
-    /* Mobile: JS handles mask too */
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 3rem 1.5rem 6rem;
+    background: #000; /* Fondo negro para el texto debajo de la imagen */
+    margin-top: 0;
+    width: 100%;
+    pointer-events: auto;
+  }
+
+  .hero-eyebrow {
+    margin-top: 1rem;
+    font-size: 0.65rem;
+  }
+
+  .hero-h1 { 
+    font-size: 2.2rem; 
+    text-shadow: none;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary, .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
+
+  .blade-cut {
+    display: none;
   }
 }
 

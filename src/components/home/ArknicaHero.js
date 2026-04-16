@@ -14,20 +14,8 @@ export default function WrapHero({ msg = {} }) {
     const el = scannerRef.current;
     if (!el) return;
 
-    // En web usamos mask-image, pero en móvil clipPath es 100x más rápido y no genera parpadeos blancos.
     el.style.opacity = '1';
     
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      el.classList.add('mobile-auto-reveal');
-    } else {
-      el.classList.remove('mobile-auto-reveal');
-      el.style.WebkitMaskImage = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
-      el.style.maskImage       = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
-      el.style.clipPath = 'none';
-      el.style.WebkitClipPath = 'none';
-    }
-
     const hero = el.closest('.wrap-hero');
     if (!hero) return;
 
@@ -41,19 +29,30 @@ export default function WrapHero({ msg = {} }) {
     let cy = Math.round(window.innerHeight / 2);
 
     const updateMask = () => {
-      if (window.innerWidth <= 768) {
-        // En móvil no usamos scroll reveal. Se manejará con animación CSS pura en la clase.
-        ticking = false;
-        return;
-      }
-
       const scrolled = Math.min(lastScrollY, heroH);
       const progress = scrolled / heroH;
-      const radius = Math.round(50 + progress * maxR);
       
-      const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
-      el.style.WebkitMaskImage = grad;
-      el.style.maskImage       = grad;
+      const isMobile = window.innerWidth <= 768;
+      // En móvil el radio crece más rápido para ser notorio
+      const baseRadius = isMobile ? 80 : 50;
+      const radius = Math.round(baseRadius + progress * maxR);
+      
+      if (isMobile) {
+        // clipPath es más rápido en móviles
+        const clip = `circle(${radius}px at ${cx}px ${cy}px)`;
+        el.style.clipPath = clip;
+        el.style.WebkitClipPath = clip;
+        el.style.maskImage = 'none';
+        el.style.WebkitMaskImage = 'none';
+      } else {
+        // radial-gradient para Desktop (suavizado)
+        const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
+        el.style.WebkitMaskImage = grad;
+        el.style.maskImage       = grad;
+        el.style.clipPath = 'none';
+        el.style.WebkitClipPath = 'none';
+      }
+      
       ticking = false;
     };
 
@@ -76,7 +75,6 @@ export default function WrapHero({ msg = {} }) {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize, { passive: true });
     
-    // Initial call
     onScroll();
 
     return () => {
@@ -87,11 +85,13 @@ export default function WrapHero({ msg = {} }) {
 
   return (
     <section className="wrap-hero">
-      <div className="hero-base" style={{ backgroundImage: 'url(/bg-hero-1.png)' }} />
-      <div className="hero-vignette" />
+      <div className="hero-visual-area">
+        <div className="hero-base" style={{ backgroundImage: 'url(/bg-hero-1.png)' }} />
+        <div className="hero-vignette" />
 
-      <div className="hero-scanner scroll-reveal" ref={scannerRef}>
-        <div className="hero-reveal" style={{ backgroundImage: 'url(/bg-hero-2.png)' }} />
+        <div className="hero-scanner scroll-reveal" ref={scannerRef}>
+          <div className="hero-reveal" style={{ backgroundImage: 'url(/bg-hero-2.png)' }} />
+        </div>
       </div>
 
       <div className="hero-content">

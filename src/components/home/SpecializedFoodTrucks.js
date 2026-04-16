@@ -15,14 +15,14 @@ export default function SpecializedFoodTrucks() {
   const [activePoint, setActivePoint] = useState(null);
 
   return (
-    <section className="foodtruck-section">
+    <section className="foodtruck-section" id="foodtruck">
       <div className="ft-header">
         <h2 className="text-metallic">Specialized Food Trucks</h2>
         <p>Sabemos que tu Food truck es tu negocio. Cuidamos cada remache.</p>
       </div>
 
       <div className="ft-container">
-        {/* Usamos una silueta vectorial de un Foodtruck o una imagen real oscura */}
+        {/* DIAGRAMA */}
         <div className="truck-diagram" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1565097158282-1094bd0db2ab?auto=format&fit=crop&q=80&w=1200')" }}>
           <div className="diagram-overlay"></div>
           
@@ -31,6 +31,7 @@ export default function SpecializedFoodTrucks() {
               key={point.id} 
               className={`hotspot ${activePoint?.id === point.id ? 'active' : ''}`}
               style={{ top: point.top, left: point.left }}
+              onClick={() => setActivePoint(activePoint?.id === point.id ? null : point)}
               onMouseEnter={() => setActivePoint(point)}
               onMouseLeave={() => setActivePoint(null)}
             >
@@ -41,13 +42,30 @@ export default function SpecializedFoodTrucks() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="hotspot-tooltip"
+                    className="hotspot-tooltip desktop-only"
                   >
                     <h4>{point.title}</h4>
                     <p>{point.desc}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
+          ))}
+        </div>
+
+        {/* MÓVIL: LISTA DE PUNTOS (reemplaza tooltips encimados) */}
+        <div className="ft-mobile-list mobile-only">
+          {truckPoints.map((point) => (
+            <div 
+              key={point.id} 
+              className={`ft-card ${activePoint?.id === point.id ? 'active' : ''}`}
+              onClick={() => setActivePoint(point)}
+            >
+              <div className="card-dot" />
+              <div className="card-info">
+                <h4>{point.title}</h4>
+                <p>{point.desc}</p>
+              </div>
             </div>
           ))}
         </div>
