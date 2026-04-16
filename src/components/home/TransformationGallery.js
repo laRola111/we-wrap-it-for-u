@@ -12,34 +12,34 @@ const projects = [
     material: 'Avery Dennison Gloss Dragon Fire Red', time: '3 días diseño + 2 días inst.', height: '420px'
   },
   {
-    id: 2, type: 'carro', title: 'Superdeportivo — Chrome Mirror',
+    id: 2, type: 'van', title: 'Camioneta Edición Limitada',
+    before: '/truck-wrap-2.png',
+    after:  '/truck-wrap-1.png',
+    material: 'Custom Graphics Premium', time: '3 días', height: '340px'
+  },
+  {
+    id: 3, type: 'van', title: 'Flota Comercial Táctica',
+    before: '/truck-wrap-1.png',
+    after:  '/truck-wrap-3.png',
+    material: 'Oracal 651 Premium Cast', time: '2 días', height: '460px'
+  },
+  {
+    id: 4, type: 'van', title: 'Pick-Up Adventure Wrap',
+    before: '/truck-wrap-3.png',
+    after:  '/truck-wrap-4.png',
+    material: '3M™ 1080 Matte Black Details', time: '4 días', height: '360px'
+  },
+  {
+    id: 5, type: 'van', title: 'Corporate Work Truck',
+    before: '/truck-wrap-4.png',
+    after:  '/truck-wrap-2.png',
+    material: 'Impresión Digital 3M IJ180mC', time: '3 días', height: '400px'
+  },
+  {
+    id: 6, type: 'carro', title: 'Superdeportivo — Chrome',
     before: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=900',
     after:  '/car-wrap-1.png',
-    material: '3M™ 1080 Gloss Gold Chrome', time: '4 días', height: '340px'
-  },
-  {
-    id: 3, type: 'van', title: 'Flota Corporativa — 5 Vans',
-    before: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1626359547514-6ba96ec2b3cc?auto=format&fit=crop&q=80&w=900',
-    material: 'Oracal 651 Premium Cast + Laminado UV', time: '2 días por unidad', height: '460px'
-  },
-  {
-    id: 4, type: 'carro', title: 'Sedan Premium — Matte Black',
-    before: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=900',
-    after:  '/car-wrap-2.png',
-    material: '3M™ 1080 Matte Black M12', time: '3 días', height: '360px'
-  },
-  {
-    id: 5, type: 'foodtruck', title: 'Street Kitchen — Full Brand',
-    before: 'https://images.unsplash.com/photo-1565097158282-1094bd0db2ab?auto=format&fit=crop&q=80&w=900',
-    after:  '/foodtruck-wrap-2.png',
-    material: 'Impresión Digital 3M IJ180mC', time: '5 días diseño + 3 días inst.', height: '400px'
-  },
-  {
-    id: 6, type: 'van', title: 'Delivery Fleet — Corporate Blue',
-    before: 'https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=900',
-    after:  'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&q=80&w=900',
-    material: 'Avery Dennison MPI 1005 Easy Apply', time: '2 días/unidad', height: '380px'
+    material: '3M™ 1080 Gloss Gold Chrome', time: '4 días', height: '380px'
   },
 ];
 
