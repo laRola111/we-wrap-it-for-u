@@ -14,10 +14,21 @@ export default function WrapHero({ msg = {} }) {
     const el = scannerRef.current;
     if (!el) return;
 
-    // Set initial mask via JS (avoids cssnano crash)
+    // En web usamos mask-image, pero en móvil clipPath es 100x más rápido y no genera parpadeos blancos.
     el.style.opacity = '1';
-    el.style.WebkitMaskImage = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
-    el.style.maskImage       = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
+    
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      el.style.clipPath = 'circle(50px at 50% 50%)';
+      el.style.WebkitClipPath = 'circle(50px at 50% 50%)';
+      el.style.maskImage = 'none';
+      el.style.WebkitMaskImage = 'none';
+    } else {
+      el.style.WebkitMaskImage = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
+      el.style.maskImage       = 'radial-gradient(circle 50px at 50% 50%, black 90%, transparent 100%)';
+      el.style.clipPath = 'none';
+      el.style.WebkitClipPath = 'none';
+    }
 
     const hero = el.closest('.wrap-hero');
     if (!hero) return;
@@ -36,9 +47,18 @@ export default function WrapHero({ msg = {} }) {
       const progress = scrolled / heroH;
       const radius = Math.round(50 + progress * maxR);
       
-      const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
-      el.style.WebkitMaskImage = grad;
-      el.style.maskImage       = grad;
+      if (window.innerWidth <= 768) {
+        // Usa clipPath hardware accelerated para móviles 
+        const clip = `circle(${radius}px at ${cx}px ${cy}px)`;
+        el.style.clipPath = clip;
+        el.style.WebkitClipPath = clip;
+      } else {
+        // Usa maskImage para webs (suavizado)
+        const grad = `radial-gradient(circle ${radius}px at ${cx}px ${cy}px, black 90%, transparent 100%)`;
+        el.style.WebkitMaskImage = grad;
+        el.style.maskImage       = grad;
+      }
+      
       ticking = false;
     };
 
